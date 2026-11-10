@@ -15,8 +15,11 @@ abbrev SylowSubgroups (G: Type) [Group G] (p n : Nat ) :=
 
 lemma p_does_not_divide_X (G: Type)[Group G] [Finite G]
 (p n : Nat)
-:  ¬ (p ∣ Nat.card ( X G p n)) := by
+:  ¬ (p ∣ Nat.card (X G p n)) := by
   sorry
+
+-- lemma X_equals_sum_of_orb_G (G: Type) [Group G] [Finite G]
+
 
 
 theorem prop_3_5 (G: Type) [Group G] [Finite G] (p m n  : Nat)
@@ -25,4 +28,12 @@ theorem prop_3_5 (G: Type) [Group G] [Finite G] (p m n  : Nat)
 :
  Nat.card (SylowSubgroups G p n)  ≡ 1 [MOD p]  := by
     have h:= p_does_not_divide_X G p n
+    -- X is the sum of orbit of S  Kevin
+    -- claim 1 Daniel
+    -- claim 2 Aryan
+    -- conclusion Ed
+
     sorry
+
+
+--
