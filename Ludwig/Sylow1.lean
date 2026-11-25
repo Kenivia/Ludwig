@@ -59,8 +59,9 @@ theorem sylow_one (G : Type) [Group G] [Finite G]
     simpa only [Nat.add_zero] using
       (Nat.ModEq.refl (m * n)).add hbadZero
 
-  have hcount : m ≡ m * n [MOD p] :=
-    hbinomial.symm.trans horbit
+  have hcount : m ≡ m * n [MOD p] := by
+    have hmTotal : m ≡ total [MOD p] := hbinomial.symm
+    exact hmTotal.trans horbit
 
   exact finish_sylow_count (Fact.out : Nat.Prime p) hm hcount
 
