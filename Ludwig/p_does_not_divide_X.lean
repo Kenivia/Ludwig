@@ -4,6 +4,7 @@ import Mathlib.Data.Fintype.Powerset
 import Mathlib.Data.Set.Card
 import Mathlib.Data.Nat.ModEq
 import Mathlib.Data.Nat.Prime.Basic
+import Mathlib.Data.Nat.Choose.Dvd
 
 /-!
 # Cardinality of `X`
@@ -33,7 +34,25 @@ Nat.card (X G p n) = Nat.choose (m * p ^ n) (p ^ n)
   rw [Nat.card_congr (FiniteX G p n), Nat.card_eq_fintype_card,
     Fintype.card_finset_len, ← Nat.card_eq_fintype_card, hG]
 
-lemma lemma_3_4_ii (p n m : Nat) :
+
+lemma lemma_3_4_i (p i : Nat)
+  (h1 : p.Prime)
+  -- (h2: (Nat.gcd m p) = 1)
+  (h3 : 1 ≤ i ∧ i ≤ p - 1) :
+p ∣  Nat.choose p i := by
+  have hi0 : i ≠ 0 := by
+    omega
+  have hip : i < p := by
+    have hp : 2 ≤ p := h1.two_le
+    omega
+  exact h1.dvd_choose_self hi0 hip
+
+
+lemma lemma_3_4_ii (p n m : Nat)
+(h1 : p.Prime)
+(h2: (Nat.gcd m p) = 1)
+:
+
 (Nat.choose (m * p ^ n) (p ^ n)) ≡ m [MOD p] := by
 
 
